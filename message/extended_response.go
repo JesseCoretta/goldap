@@ -12,11 +12,6 @@ func (extended *ExtendedResponse) SetResponseName(name LDAPOID) {
 	extended.responseName = &name
 }
 
-func (extended *ExtendedResponse) SetResponseValue(value string) {
-	oct := OCTETSTRING(value)
-	extended.responseValue = &oct
-}
-
 func readExtendedResponse(bytes *Bytes) (ret ExtendedResponse, err error) {
 	err = bytes.ReadSubBytes(classApplication, TagExtendedResponse, ret.readComponents)
 	if err != nil {
